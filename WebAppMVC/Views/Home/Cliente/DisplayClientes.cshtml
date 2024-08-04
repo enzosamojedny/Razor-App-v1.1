@@ -1,0 +1,31 @@
+﻿@model List<DAL.Entities.Cliente>
+
+@{
+	ViewData["Title"] = "DisplayClientes";
+}
+<h1>Clientes List</h1>
+
+<table class="table">
+	<thead>
+		<tr>
+			<th>@Html.DisplayNameFor(model=>model[0].clienteID)</th>
+			<th>@Html.DisplayNameFor(model => model[0].nombreCliente)</th>
+			<th>@Html.DisplayNameFor(model => model[0].carritoID)</th>
+			<th>Actions</th>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach(var cliente in Model)
+		{
+			<tr>
+				<td>@cliente.clienteID</td>
+				<td>@cliente.nombreCliente</td>
+				<td>@cliente.carritoID</td>
+				<td>
+					@Html.ActionLink("Create", "CreateCliente", new { nombreCliente = cliente.nombreCliente, carritoID = cliente.carritoID }) | <!-- aca deberia haber tipo slk con varios carritos supongo-->
+					@Html.ActionLink("Details", "DisplayClienteByID", new { clienteID = cliente.clienteID })
+				</td>
+			</tr>
+		}
+	</tbody>
+</table>

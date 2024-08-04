@@ -1,0 +1,32 @@
+﻿@model List<DAL.Entities.Producto>
+
+@{
+    ViewData["Title"] = "DisplayProductos";
+}
+
+<h1>Products List</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model[0].productoID)</th>
+            <th>@Html.DisplayNameFor(model => model[0].nombreProducto)</th>
+            <th>@Html.DisplayNameFor(model => model[0].precio)</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var producto in Model)
+        {
+            <tr>
+                <td>@producto.productoID</td>
+                <td>@producto.nombreProducto</td>
+                <td>@producto.precio</td>
+                <td>
+                    @Html.ActionLink("Create", "CreateProducto", new { nombreProducto = producto.nombreProducto, precio = producto.precio }) |
+                    @Html.ActionLink("Details", "DisplayProductoByID", new { id = producto.productoID })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

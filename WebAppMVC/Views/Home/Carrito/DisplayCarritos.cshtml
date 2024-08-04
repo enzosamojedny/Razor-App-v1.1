@@ -1,0 +1,30 @@
+﻿@model List<DAL.Entities.Carrito>
+
+@{
+    ViewData["Title"] = "DisplayCarritos";
+}
+
+<h1>Products List</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model[0].productoID)</th>
+            <th>@Html.DisplayNameFor(model => model[0].carritoID)</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var carrito in Model)
+        {
+            <tr>
+                <td>@carrito.carritoID</td>
+                <td>@carrito.productoID</td>
+                <td>
+                    @Html.ActionLink("Create", "CreateCarrito", new { carritoID = carrito.carritoID, productoID = carrito.productoID }) |
+                    @Html.ActionLink("Details", "DisplayCarritoByID", new { id = carrito.productoID })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
